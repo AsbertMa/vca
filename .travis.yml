@@ -1,0 +1,13 @@
+node_js:
+    - "12"
+script:
+- |
+  npm i
+  npm run build
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  local-dir: dist
+  on:
+    branch: master

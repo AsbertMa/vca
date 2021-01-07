@@ -1,1 +1,1 @@
-# vca
+# Show VeChain Community Award Token
