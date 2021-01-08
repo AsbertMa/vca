@@ -6,7 +6,9 @@ module.exports = {
   entry: './src/index.ts',
   plugins: [
     new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({}),
+    new HtmlWebpackPlugin({
+      title: 'VeChain Community Award'
+    }),
   ],
   module: {
     rules: [
