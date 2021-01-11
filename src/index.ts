@@ -1,3 +1,4 @@
+import './style/theme.css'
 import { abi } from 'thor-devkit'
 
 const TOKEN_ABI: abi.Function.Definition = {
@@ -26,7 +27,7 @@ async function getAddress() {
             purpose: 'agreement',
             payload: {
                 type: 'text',
-                content: 'Share address with Vechain Community'
+                content: 'Approve VeChain community award smart contract to check NFT balance'
             }
         })
         return cert.annex.signer
@@ -49,9 +50,17 @@ window.onload = function () {
         if (decoded && decoded[0] && decoded[0].length) {
             const img = document.createElement('img')
             img.style.width = '100%'
+            img.style.maxWidth = '600px'
+            img.style.display = 'block'
+            img.style.margin = '10px auto'
             img.src = 'https://cdn.vechain.com/wallet/images/community-award-tokens/token.png'
 
             document.body.append(img)
+        } else {
+            const c = document.querySelector('.content')
+            if (c) {
+                (c as (HTMLElement)).style.display = 'block'
+            }
         }
     })
 }

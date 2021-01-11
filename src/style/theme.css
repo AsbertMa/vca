@@ -1,0 +1,14 @@
+body {
+    margin: 0;
+}
+body .content{
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    display: none;
+}
+
+.summary {
+    padding: 16px;
+    line-height: 1.5em;
+}
