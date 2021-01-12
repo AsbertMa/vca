@@ -62,24 +62,32 @@ function getDeviceType() {
 function init() {
     const event = ['mobile', 'tablet'].includes(getDeviceType()) ? 'touchend' : 'click'
     const checkEle = document.getElementById('check-now')
-    console.log(checkEle)
+    
     checkEle?.addEventListener('click', () => {
+
+        if (!window.connex) {
+            location.href = 'https://env.vechain.org/r/#' + encodeURIComponent(location.href)
+        }
         getTokenList().then(decoded => {
             const dialog = document.createElement('div')
+            const alert = document.createElement('div')
             dialog.classList.add('dialog')
 
             if (decoded && decoded[0] && decoded[0].length) {
                 const img = document.createElement('img')
+                const span = document.createElement('span')
+                span.innerText = 'Congratulations! You have won the VeChain Community Awards!'
+                span.style.color = '#fff'
+                span.style.fontSize = '1.4em'
                 img.style.width = '100%'
                 img.style.maxWidth = '600px'
                 img.style.display = 'block'
-                img.style.margin = '10px auto'
+                img.style.margin = '30px auto'
                 img.src = 'https://cdn.vechain.com/wallet/images/community-award-tokens/token.png'
-                dialog.append(img)
+                alert.append(span)
+                alert.append(img)
             } else {
-                const alert = document.createElement('div')
                 const ldiv = document.createElement('div')
-
                 const img = document.createElement('img')
                 img.src = require('./assets/warning.png')
                 img.style.width = '60px'
@@ -93,9 +101,8 @@ function init() {
                 alert.append(ldiv)
                 alert.append(rdiv)
                 alert.classList.add('tip-1', 'alert-text')
-                dialog.append(alert)
             }
-
+            dialog.append(alert)
             dialog.addEventListener(event, function (event) {
                 event.stopPropagation()
                 if (event.target === dialog) {

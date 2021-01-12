@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <link rel="preload" content-type="image/png" crossorigin as="image" href="https://cdn.vechain.com/wallet/images/community-award-tokens/token.png">
+    <link rel="preload" content-type="image/jpg" as="image" href="<%=require('./src/assets/head.jpg')%>">
+    <link rel="preload" content-type="image/png" as="image" href="<%=require('./src/assets/warning.png')%>">
+    <link rel="preload" content-type="image/png" as="image" href="<%=require('./src/assets/icon.png')%>">
 </head>
 <body>
     <img src="<%=require('./src/assets/head.jpg')%>" width="100%" alt="">
