@@ -33,13 +33,15 @@ body .content {
     justify-content: space-around;
     text-align: center;
 }
-.dialog > div {
+.alert-img {
     max-width: 400px;
     width: 100%;
     margin: auto;
 }
 .alert-text {
     background-color: #fff;
+    max-width: 300px;
+    width: 100%;
     padding: 20px;
     margin: auto;
     border-radius: 10px;

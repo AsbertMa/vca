@@ -86,6 +86,7 @@ function init() {
                 img.src = 'https://cdn.vechain.com/wallet/images/community-award-tokens/token.png'
                 alert.append(span)
                 alert.append(img)
+                alert.classList.add('alert-img')
             } else {
                 const ldiv = document.createElement('div')
                 const img = document.createElement('img')
