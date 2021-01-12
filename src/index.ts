@@ -44,23 +44,67 @@ async function getTokenList() {
         return r.decoded
     }
 }
+function getDeviceType() {
+    const ua = navigator.userAgent
+    if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
+        return "tablet"
+    }
+    if (
+        /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
+            ua
+        )
+    ) {
+        return "mobile"
+    }
+    return "desktop"
+}
 
-window.onload = function () {
-    getTokenList().then(decoded => {
-        if (decoded && decoded[0] && decoded[0].length) {
-            const img = document.createElement('img')
-            img.style.width = '100%'
-            img.style.maxWidth = '600px'
-            img.style.display = 'block'
-            img.style.margin = '10px auto'
-            img.src = 'https://cdn.vechain.com/wallet/images/community-award-tokens/token.png'
+function init() {
+    const event = ['mobile', 'tablet'].includes(getDeviceType()) ? 'touchend' : 'click'
+    const checkEle = document.getElementById('check-now')
+    console.log(checkEle)
+    checkEle?.addEventListener('click', () => {
+        getTokenList().then(decoded => {
+            const dialog = document.createElement('div')
+            dialog.classList.add('dialog')
 
-            document.body.append(img)
-        } else {
-            const c = document.querySelector('.content')
-            if (c) {
-                (c as (HTMLElement)).style.display = 'block'
+            if (decoded && decoded[0] && decoded[0].length) {
+                const img = document.createElement('img')
+                img.style.width = '100%'
+                img.style.maxWidth = '600px'
+                img.style.display = 'block'
+                img.style.margin = '10px auto'
+                img.src = 'https://cdn.vechain.com/wallet/images/community-award-tokens/token.png'
+                dialog.append(img)
+            } else {
+                const alert = document.createElement('div')
+                const ldiv = document.createElement('div')
+
+                const img = document.createElement('img')
+                img.src = require('./assets/warning.png')
+                img.style.width = '60px'
+
+                const rdiv = document.createElement('div')
+                const span = document.createElement('span')
+                span.innerText = `Opps! You don't own any NFTs yet!`
+
+                ldiv.append(img)
+                rdiv.append(span)
+                alert.append(ldiv)
+                alert.append(rdiv)
+                alert.classList.add('tip-1', 'alert-text')
+                dialog.append(alert)
             }
-        }
+
+            dialog.addEventListener(event, function (event) {
+                event.stopPropagation()
+                if (event.target === dialog) {
+                    dialog.remove()
+                }
+            })
+            document.body.append(dialog)
+        })
     })
 }
+
+window.onload = init

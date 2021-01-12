@@ -1,14 +1,47 @@
 body {
     margin: 0;
-}
-body .content{
     width: 100%;
     max-width: 600px;
     margin: auto;
-    display: none;
-}
-
-.summary {
-    padding: 16px;
+    box-sizing: content-box;
+    padding: 0;
     line-height: 1.5em;
+    font-family: "Heiti SC";
+}
+body .content {
+    padding: 16px;
+}
+.tip-1 {
+    max-width: 350px;
+    display: flex;
+    flex-direction: row;
+}
+.tip-1 > div {
+    align-self: center;
+}
+.dialog {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.alert-text {
+    background-color: #fff;
+    /* text-align: center; */
+    width: 100%;
+    max-width: 300px;
+    padding: 20px;
+    margin: auto;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.3em;
+    line-height: 1.5em;
+}
+.alert-text > div {
+    padding: 10px;
 }

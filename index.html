@@ -6,13 +6,24 @@
     <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 <body>
-    <section class="content">
-        <img src="<%=require('./src/assets/head.jpg')%>" width="100%" alt="">
-        <div class="summary">
+    <img src="<%=require('./src/assets/head.jpg')%>" width="100%" alt="">
+    <div class="content">
+        <section class="summary">
             <h2>VeChain Community Award</h2>
             <p>Welcome to the VeChain Community Award page! The Awards are given in recognition of our immense appreciation for the efforts of our community in all its forms. </p>
             <p>Participant in the future VeChain Community Events and win your awards!</p>
-        </div>
-    </section>
+        </section>
+        <section class="check-info">
+            <div class="tip-1">
+               <div><img width="100px" src="<%=require('./src/assets/icon.png')%>" alt=""></div>
+               <div>
+                   <span>
+                       Looks awesome! Let me check my NFT balance!
+                        <a id="check-now" href="javascript:;" >Check now</a>
+                    </span>
+                </div>
+            </div>
+        </section>
+    </div>
 </body>
 </html>
