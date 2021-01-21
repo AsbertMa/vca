@@ -95,7 +95,7 @@ function init() {
 
                 const rdiv = document.createElement('div')
                 const span = document.createElement('span')
-                span.innerText = `Opps! You don't own any NFTs yet!`
+                span.innerText = `Sorry! You don't own any community award NFTs yet!`
 
                 ldiv.append(img)
                 rdiv.append(span)
